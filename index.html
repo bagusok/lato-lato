@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      .lato-lato {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: start;
+        justify-content: center;
+      }
+      .wrapper {
+        width: 378px;
+        height: 378px;
+        border-radius: 100%;
+        position: relative;
+      }
+      .bulatan {
+        position: absolute;
+        top: 51%;
+        left: 46%;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 100%;
+        background: #fbbf24;
+        z-index: 1;
+      }
+      .tali {
+        width: 100%;
+        height: 3rem;
+        position: absolute;
+        display: flex;
+        top: 50%;
+        transform-origin: center;
+        transition: all 0.1s ease-in-out;
+      }
+
+      .tali-satu {
+        transform: rotate(-45deg);
+      }
+      .tali-dua {
+        transform: rotate(225deg);
+      }
+
+      .tali > .setengah-tali {
+        width: 50%;
+        height: 3px;
+        position: relative;
+        background-color: black;
+        margin: auto 0;
+      }
+      .bandul {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 100%;
+        background-color: #ea580c;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="lato-lato">
+      <div class="wrapper">
+        <div class="bulatan"></div>
+        <div class="tali tali-satu" id="tali-satu">
+          <div class="setengah-tali"></div>
+          <div class="bandul"></div>
+        </div>
+        <div class="tali tali-dua" id="tali-dua">
+          <div class="setengah-tali"></div>
+          <div class="bandul"></div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+      integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        let isAuto = false;
+        let a = false;
+
+        const rotate = () => {
+          const audio = new Audio('/pouch.mp3');
+          audio.playbackRate = 2;
+          //   alert('aaa');
+          if (a) {
+            $('#tali-satu').css('transform', 'rotate(-82deg)');
+            $('#tali-dua').css('transform', 'rotate(262deg)');
+
+            audio.play();
+            a = false;
+          } else {
+            $('#tali-satu').css('transform', 'rotate(82deg)');
+            $('#tali-dua').css('transform', 'rotate(98deg)');
+
+            audio.play();
+            a = true;
+          }
+        };
+
+        $(window).click(() => {
+          rotate();
+          //   isAuto = !isAuto;
+          //   function rec() {
+          //     rotate();
+          //     if (isAuto) {
+          //       setTimeout(rec, 100);
+          //     }
+          //     return;
+          //   }
+          //   rec();
+        });
+      });
+    </script>
+  </body>
+</html>
